@@ -5,3 +5,15 @@ export type Article = {
     content:string
     editors: Editor[]
 }
+
+export const getArticle = (jsonObj: any) => {
+    const { titulo, conteudo } = jsonObj
+
+    const article : Article = {
+        title: titulo,
+        content: conteudo,
+        editors: []
+    }
+
+    return article 
+}
