@@ -16,3 +16,27 @@ export const findALLEditors = async () => {
 
     return editors
 }
+
+export const updateEditor = async (editor : Editor) => {
+     const { id , name , email} = editor
+    
+     if(id){
+        const response = await sql`
+            update editor 
+            set nome = ${name}, email = ${email}
+            where id=${id}
+        `
+        return response
+     }
+     return 'id não informado'
+}
+
+export const deleteEditor = async (id: number) => {
+    if (id){
+        const response = await sql`
+            delete from editor where id=${id}
+        `
+        return response
+    }
+    return 'id não informado'
+}

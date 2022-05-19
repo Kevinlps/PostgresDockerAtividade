@@ -5,8 +5,18 @@ const sql = postgres(
 )
 
 export const createTables = async () => {
+  
   await sql`
-    create table if not exists editor (
+    drop table if exists editor_artigo
+  `
+  await sql`
+    drop table if exists editor
+  `
+  await sql`
+  drop table if exists artigo
+`
+  await sql`
+    create table editor(
       id serial primary key,
       nome varchar not null,
       email varchar not null
@@ -14,31 +24,23 @@ export const createTables = async () => {
   `
 
   await sql`
-    create table if not exists artigo(
+    create table artigo(
       id serial primary key,
       titulo varchar not null,
       conteudo text not null
     )
   `
   await sql`
-    create table if not exists editor_artigo(
+    create table editor_artigo(
       id_editor integer not null,
       id_artigo integer not null,
       primary key (id_editor, id_artigo),
-      constraint fk_editor foreign key (id_editor) references editor(id),
-      constraint fk_artigo foreign key (id_artigo) references artigo(id)
+      constraint fk_editor foreign key (id_editor) references editor(id) on delete cascade,
+      constraint fk_artigo foreign key (id_artigo) references artigo(id) on delete cascade
 
     )
   `
-  await sql`
-        delete from editor_artigo
-  `
-  await sql`
-        delete from editor
-  `
-  await sql`
-        delete from artigo
-  `
+
 }
 
 export default sql
