@@ -48,3 +48,10 @@ const run = async () => {
 
 }
 run()
+
+/*
+especie : tudo obrigatorio
+especime :apelido é opicional
+zelador : tudo obrigatorio
+
+*/
