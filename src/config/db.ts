@@ -122,7 +122,7 @@ export const createTables = async () => {
           constraint fk_zelador
             foreign key(matricula_zelador)
               references zelador(matricula)
-        )
+        
   `
   
   await sql`
