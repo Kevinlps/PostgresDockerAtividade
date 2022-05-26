@@ -12,7 +12,7 @@ export const savedEspecime = async (especime: Especime)=>{
 export const findAllEspecimes= async () => {
     const especimes = await sql`
       select * from especime
-      where id_especie = '1'
+      where id_especie = ''
     `
   
     return especimes
